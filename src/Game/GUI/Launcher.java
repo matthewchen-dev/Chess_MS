@@ -1,6 +1,7 @@
 package Game.GUI;
 
 import Game.Pieces.King;
+import Game.Pieces.Pawn;
 import Game.Pieces.Rook;
 
 public class Launcher {
@@ -9,8 +10,9 @@ public class Launcher {
 
 
         new Board();
-        new Rook();
         new King();
+        new Pawn();
+        new Rook();
 
     }
 

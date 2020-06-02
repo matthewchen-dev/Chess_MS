@@ -1,21 +1,28 @@
 package Game.GUI;
 
+import Game.Pieces.King;
+import Game.Pieces.Pawn;
+import Game.Pieces.Rook;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class Board extends JFrame{
 
-    private Container contents;
 
-    //Grid
-    public JButton[][] Tiles = new JButton[5][5];
+        public Container contents;
 
-    //Colours
-    public Color White = Color.WHITE; //White Squares; by default the panel is white, not really needed
-    public Color Black = Color.BLACK; //Black Squares
+        //Grid
 
+        public JButton [][]Tiles = new JButton[5][5];
+
+
+        //Colours
+        public Color White = Color.WHITE; //White Squares; by default the panel is white, not really needed
+        public Color Black = Color.BLACK; //Black Squares
 
 
     public Board() {
@@ -27,7 +34,12 @@ public class Board extends JFrame{
         contents = getContentPane();
         contents.setLayout(new GridLayout(5, 5));
 
-
+        //Size and Display Window
+        setSize(1200, 1200);
+        setResizable(false);
+        setLocationRelativeTo(null);//centres window
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and Add Board Components
         for (int i = 0; i < 5; i++) {//walks ranks
@@ -48,14 +60,9 @@ public class Board extends JFrame{
         }
 
 
-        //Size and Display Window
-        setSize(1200, 1200);
-        setResizable(false);
-        setLocationRelativeTo(null);//centres window
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }//end of ChessGUI
+
+
 
 
 }//end of class

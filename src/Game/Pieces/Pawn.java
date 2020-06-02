@@ -6,20 +6,20 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class King extends Board {
+public class Pawn extends Board {
 
     //Images
-    private ImageIcon King = new ImageIcon(("img\\king.jpg"));
+    private ImageIcon Pawn = new ImageIcon(("img\\pawn.jpg"));
 
-    private int x = 4;
+    private int x = 3;
     private int y = 2;
     boolean selected = false;
 
     //Event Handlers
-    private ButtonHandlerKing handler = new ButtonHandlerKing();
+    private ButtonHandlerPawn handler = new Pawn.ButtonHandlerPawn();
 
-    public King() {
-        Tiles[x][y].setIcon(King);
+    public Pawn() {
+        Tiles[x][y].setIcon(Pawn);
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -31,37 +31,32 @@ public class King extends Board {
     }
 
 
-    private void processClickKing(int i, int j){
+    private void processClickPawn(int i, int j){
 
-        if(isValidMoveKing(i, j) == false){
+        if(isValidMovePawn(i, j) == false){
             return;
         }
         Tiles[x][y].setIcon(null);
-        Tiles[i][j].setIcon(King);
+        Tiles[i][j].setIcon(Pawn);
         x = i;
         y = j;
     }
 
-    private boolean isValidMoveKing(int i, int j){
+    private boolean isValidMovePawn(int i, int j){
 
         int deltaX = Math.abs(i - x);
         int deltaY = Math.abs(j -y);
 
-        if((deltaX == 1) && (deltaY == 1)){
-            return true;
-        }else if ((deltaX == 1) && (deltaY == 1)){
+        if((deltaX == 1) && (deltaY == 0)){
             return true;
         }else if ((deltaX == 1) && (deltaY == 0)){
             return true;
-        } else if ((deltaX == 0) && deltaY == 1){
-            return true;
-        }
-        else{
+        }else{
             return false;
         }
     }
 
-    private class ButtonHandlerKing implements ActionListener {
+    private class ButtonHandlerPawn implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
@@ -75,7 +70,7 @@ public class King extends Board {
                 for(int j = 0; j < 5; j++){
 
                     if(source == Tiles[i][j] && selected == true){
-                        processClickKing(i,j);
+                        processClickPawn(i,j);
                     }
 
                 }

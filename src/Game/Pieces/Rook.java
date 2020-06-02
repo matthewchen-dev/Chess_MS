@@ -8,17 +8,17 @@ import java.awt.event.ActionListener;
 
 public class Rook extends Board {
 
-    //Images
-    private ImageIcon Rook = new ImageIcon(("img\\rook.jpg"));
+        //Images
+        private ImageIcon Rook = new ImageIcon(("img\\rook.jpg"));
 
-    private int x = 4;
-    private int y = 4;
-    boolean selected = false;
+        private int x = 4;
+        private int y = 4;
+        boolean selected = false;
 
-    //Event Handlers
-    private ButtonHandler handler = new ButtonHandler();
+        //Event Handlers
+        private ButtonHandlerRook handler = new ButtonHandlerRook();
 
-    public Rook() {
+        public Rook() {
         Tiles[x][y].setIcon(Rook);
 
         for (int i = 0; i < 5; i++) {
@@ -31,9 +31,9 @@ public class Rook extends Board {
     }
 
 
-    private void processClickRook(int i, int j){
+        private void processClickRook ( int i, int j){
 
-        if(isValidMove(i, j) == false){
+        if (isValidMoveRook(i, j) == false) {
             return;
         }
         Tiles[x][y].setIcon(null);
@@ -42,48 +42,44 @@ public class Rook extends Board {
         y = j;
     }
 
-    private boolean isValidMove(int i, int j){
+        private boolean isValidMoveRook ( int i, int j){
 
         int deltaX = Math.abs(i - x);
-        int deltaY = Math.abs(j -y);
+        int deltaY = Math.abs(j - y);
 
-        if((deltaX <=4) && (deltaY == 0)){
+        if ((deltaX <= 4) && (deltaY == 0)) {
             return true;
-        }else if ((deltaX == 0) && (deltaY <= 4)){
+        } else if ((deltaX == 0) && (deltaY <= 4)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
+        private class ButtonHandlerRook implements ActionListener {
 
+            public void actionPerformed(ActionEvent e) {
 
+                Object source = e.getSource();
 
-    private class ButtonHandler implements ActionListener {
-
-        public void actionPerformed(ActionEvent e) {
-
-            Object source = e.getSource();
-
-            if(source == Tiles[x][y]){
-                selected = true;
-            }
-
-            for(int i = 0; i < 5; i++){
-                for(int j = 0; j < 5; j++){
-
-                    if(source == Tiles[i][j] && selected == true){
-                        processClickRook(i,j);
-                    }
-
+                if (source == Tiles[x][y]) {
+                    selected = true;
                 }
+
+                for (int i = 0; i < 5; i++) {
+                    for (int j = 0; j < 5; j++) {
+
+                        if (source == Tiles[i][j] && selected == true) {
+                            processClickRook(i, j);
+                        }
+
+                    }
+                }
+
+
             }
-
-
-
-
         }
-    }
+
 
 
 }
