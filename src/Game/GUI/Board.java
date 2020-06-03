@@ -1,13 +1,8 @@
 package Game.GUI;
 
-import Game.Pieces.King;
-import Game.Pieces.Pawn;
-import Game.Pieces.Rook;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 
 public class Board extends JFrame{
@@ -17,7 +12,7 @@ public class Board extends JFrame{
 
         //Grid
 
-        public JButton [][]Tiles = new JButton[5][5];
+        public static JButton [][]Tiles = new JButton[5][5];
 
 
         //Colours

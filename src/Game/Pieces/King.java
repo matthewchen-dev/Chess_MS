@@ -1,12 +1,12 @@
 package Game.Pieces;
 
-import Game.GUI.Board;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class King extends Board {
+import static Game.GUI.Board.Tiles;
+
+public class King {
 
     //Images
     private ImageIcon King = new ImageIcon(("img\\king.jpg"));
@@ -38,8 +38,11 @@ public class King extends Board {
         }
         Tiles[x][y].setIcon(null);
         Tiles[i][j].setIcon(King);
-        x = i;
-        y = j;
+        x = j;
+        y = i;
+        selected = false;
+
+
     }
 
     private boolean isValidMoveKing(int i, int j){

@@ -1,12 +1,12 @@
 package Game.Pieces;
 
-import Game.GUI.Board;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Rook extends Board {
+import static Game.GUI.Board.Tiles;
+
+public class Rook {
 
         //Images
         private ImageIcon Rook = new ImageIcon(("img\\rook.jpg"));
@@ -38,8 +38,10 @@ public class Rook extends Board {
         }
         Tiles[x][y].setIcon(null);
         Tiles[i][j].setIcon(Rook);
-        x = i;
-        y = j;
+        x = j;
+        y = i;
+
+        selected = false;
     }
 
         private boolean isValidMoveRook ( int i, int j){

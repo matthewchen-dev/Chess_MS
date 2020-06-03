@@ -1,12 +1,12 @@
 package Game.Pieces;
 
-import Game.GUI.Board;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Pawn extends Board {
+import static Game.GUI.Board.Tiles;
+
+public class Pawn {
 
     //Images
     private ImageIcon Pawn = new ImageIcon(("img\\pawn.jpg"));
@@ -38,8 +38,10 @@ public class Pawn extends Board {
         }
         Tiles[x][y].setIcon(null);
         Tiles[i][j].setIcon(Pawn);
-        x = i;
-        y = j;
+        x = j;
+        y = i;
+
+        selected = false;
     }
 
     private boolean isValidMovePawn(int i, int j){
