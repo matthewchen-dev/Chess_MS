@@ -5,21 +5,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Game.GUI.Board.Tiles;
+import static Game.States.Players.p2;
+import static Game.States.Players.turns;
 
-public class Pawn {
+public class BlackPawn3 {
 
     //Images
     private ImageIcon Pawn = new ImageIcon(("img\\pawn.jpg"));
 
-    private int x = 3;
-    private int y = 2;
+    private int x = 2;
+    private int y = 1;
     boolean selected = false;
 
-    //Event Handlers
-    private ButtonHandlerPawn handler = new Pawn.ButtonHandlerPawn();
 
-    public Pawn() {
-        Tiles[x][y].setIcon(Pawn);
+    //Event Handlers
+    private ButtonHandlerPawn handler = new ButtonHandlerPawn();
+
+    public BlackPawn3() {
+        Tiles[y][x].setIcon(Pawn);
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -36,24 +39,23 @@ public class Pawn {
         if(isValidMovePawn(i, j) == false){
             return;
         }
-        Tiles[x][y].setIcon(null);
+        Tiles[y][x].setIcon(null);
         Tiles[i][j].setIcon(Pawn);
         x = j;
         y = i;
-
+        System.out.println("Pawn x: " + x + " y: "+ y);
         selected = false;
+        turns++;
     }
 
     private boolean isValidMovePawn(int i, int j){
 
-        int deltaX = Math.abs(i - x);
-        int deltaY = Math.abs(j -y);
+        int deltaY = (i - y);
+        int deltaX = Math.abs(j - x);
 
-        if((deltaX == 1) && (deltaY == 0)){
+        if((deltaX == 0) && (deltaY == 1)){
             return true;
-        }else if ((deltaX == 1) && (deltaY == 0)){
-            return true;
-        }else{
+        } else{
             return false;
         }
     }
@@ -64,14 +66,15 @@ public class Pawn {
 
             Object source = e.getSource();
 
-            if(source == Tiles[x][y]){
+            if(source == Tiles[y][x]){
                 selected = true;
             }
 
             for(int i = 0; i < 5; i++){
                 for(int j = 0; j < 5; j++){
 
-                    if(source == Tiles[i][j] && selected == true){
+                    if(source == Tiles[i][j] && selected == true && p2 == true){
+
                         processClickPawn(i,j);
                     }
 
