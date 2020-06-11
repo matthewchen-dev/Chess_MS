@@ -1,29 +1,24 @@
 package Game.GUI;
 
-import Game.Pieces.*;
-import Game.States.Players;
+import Game.Rules.Turns;
 
 public class Launcher {
+
+
 
     public static void main(String[] args) {
 
         //GUI
-        new Board();
+        new Menu();
 
-        //Initializing White Pieces
-        new WhiteKing();
-        new WhiteRook2();
-        new WhitePawn3();
+        new Turns();
 
 
-        //Initializing Black Pieces
-        new BlackKing();
-        new BlackRook1();
-        new BlackPawn3();
 
-        //Game Rules
-        new Players();
 
     }
+
+
+
 
 }

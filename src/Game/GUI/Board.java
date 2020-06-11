@@ -1,17 +1,17 @@
 package Game.GUI;
 
+import Game.Pieces.*;
+import Game.Rules.Turns;
+
 import javax.swing.*;
 import java.awt.*;
 
 
-
-public class Board extends JFrame{
-
+    public class Board extends JFrame{
 
         public Container contents;
 
         //Grid
-
         public static JButton [][]Tiles = new JButton[5][5];
 
 
@@ -22,41 +22,57 @@ public class Board extends JFrame{
 
     public Board() {
 
-        JFrame frame = new JFrame();
-
-        setTitle("5x5 Chess");
-
         contents = getContentPane();
-        contents.setLayout(new GridLayout(5, 5));
 
         //Size and Display Window
-        setSize(1200, 1200);
-        setResizable(false);
+        int width = 1200;
+        int height = 1200;
+        setSize(width, height);
+        setResizable(true);
         setLocationRelativeTo(null);//centres window
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Create and Add Board Components
-        for (int i = 0; i < 5; i++) {//walks ranks
 
-            for (int j = 0; j < 5; j++) {//walks files
+        contents.setLayout(new GridLayout(5, 5));
 
-                Tiles[i][j] = new JButton();//adds buttons on every tile
+                //Create and Add Board Components
+                for (int i = 0; i < 5; i++) {//walks ranks
 
-                if ((i + j) % 2 != 0) {
-                    Tiles[i][j].setBackground(Black);
-                } else {
-                    Tiles[i][j].setBackground(White);
-                }//colours each tile alternating colours
+                    for (int j = 0; j < 5; j++) {//walks files
 
-                contents.add(Tiles[i][j]);
+                        Tiles[i][j] = new JButton();//adds buttons on every tile
 
-            }
-        }
+                        if ((i + j) % 2 != 0) {
+                            Tiles[i][j].setBackground(Black);
+                        } else {
+                            Tiles[i][j].setBackground(White);
+                        }//colours each tile alternating colours
+
+                        contents.add(Tiles[i][j]);
+
+                    }
+                }
+
+        //Initializing White Pieces
+        new WhiteKing();
+        new WhiteRook2();
+        new WhitePawn3();
 
 
-    }//end of ChessGUI
+        //Initializing Black Pieces
+        new BlackKing();
+        new BlackRook1();
+        new BlackPawn3();
 
+
+
+
+
+
+
+
+    }//end of Board
 
 
 

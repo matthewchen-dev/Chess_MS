@@ -5,14 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Game.GUI.Board.Tiles;
-import static Game.States.Players.p2;
-import static Game.States.Players.turns;
+import static Game.Rules.Turns.p2;
+import static Game.Rules.Turns.turns;
 
 public class BlackKing {
 
     //Images
     private ImageIcon King = new ImageIcon(("img\\king.jpg"));
 
+    //Variables
     private int x = 2;
     private int y = 0;
     boolean selected = false;
@@ -21,9 +22,9 @@ public class BlackKing {
     private ButtonHandlerKing handler = new ButtonHandlerKing();
 
     public BlackKing() {
-        Tiles[y][x].setIcon(King);
+        Tiles[y][x].setIcon(King);//Initial square for piece
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {//Enables each tile to sense and action
             for (int j = 0; j < 5; j++) {
                 Tiles[i][j].addActionListener(handler);
             }
@@ -33,7 +34,7 @@ public class BlackKing {
     }
 
 
-    private void processClickKing(int i, int j){
+    private void processClickKing(int i, int j){//Moves the piece
 
         if(isValidMoveKing(i, j) == false){
             return;
@@ -43,13 +44,13 @@ public class BlackKing {
         x = j;
         y = i;
 
-        System.out.println("King x: " + x + " y: "+ y);
+
         selected = false;
         turns++;
 
     }
 
-    private boolean isValidMoveKing(int i, int j){
+    private boolean isValidMoveKing(int i, int j){//Determines whether the click was valid
 
         int deltaY = Math.abs(i - y);
         int deltaX = Math.abs(j - x);
@@ -68,7 +69,7 @@ public class BlackKing {
         }
     }
 
-    private class ButtonHandlerKing implements ActionListener {
+    private class ButtonHandlerKing implements ActionListener {//Determines if a click is made
 
         public void actionPerformed(ActionEvent e) {
 

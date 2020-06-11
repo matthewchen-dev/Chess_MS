@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Game.GUI.Board.Tiles;
-import static Game.States.Players.p1;
-import static Game.States.Players.turns;
+import static Game.Rules.Turns.p1;
+import static Game.Rules.Turns.turns;
 
 public class WhitePawn3 {
 
@@ -43,9 +43,10 @@ public class WhitePawn3 {
         Tiles[i][j].setIcon(Pawn);
         x = j;
         y = i;
-        System.out.println("Pawn x: " + x + " y: "+ y);
+
         selected = false;
         turns++;
+
     }
 
     private boolean isValidMovePawn(int i, int j){

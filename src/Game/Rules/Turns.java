@@ -1,6 +1,6 @@
-package Game.States;
+package Game.Rules;
 
-public class Players {
+public class Turns {
 
     public static boolean p1;//white
     public static boolean  p2;//black
@@ -8,20 +8,25 @@ public class Players {
     public static int turns = 1; //odd == white; even == black;
 
 
-    public Players() {
+    public Turns() {
         //turns
-        while (true) {
+        while(true) {
 
-            System.out.println(turns);
-            if (turns % 2 != 0) {
+
+            System.out.println("");
+            if (turns % 2 != 0) {//p1 turn
 
                 p1 = true;
                 p2 = false;
-            } else {
+
+            } else {//p2 turn
 
                 p2 = true;
                 p1 = false;
+
             }
+
+
         }
 
     }

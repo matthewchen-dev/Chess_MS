@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Game.GUI.Board.Tiles;
-import static Game.States.Players.p2;
-import static Game.States.Players.turns;
+import static Game.Rules.Turns.p2;
+import static Game.Rules.Turns.turns;
 
 public class BlackRook1 {
 
@@ -43,9 +43,10 @@ public class BlackRook1 {
         x = j;
         y = i;
 
-        System.out.println("Rook x: " + x + " y: "+ y);
+
         selected = false;
         turns++;
+
 
 
     }

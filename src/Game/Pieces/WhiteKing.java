@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Game.GUI.Board.Tiles;
-import static Game.States.Players.p1;
-import static Game.States.Players.turns;
+import static Game.Rules.Turns.p1;
+import static Game.Rules.Turns.turns;
 
 public class WhiteKing {
 
@@ -43,9 +43,9 @@ public class WhiteKing {
         x = j;
         y = i;
 
-        System.out.println("King x: " + x + " y: "+ y);
         selected = false;
         turns++;
+
 
 
     }

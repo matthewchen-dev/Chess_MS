@@ -5,8 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Game.GUI.Board.Tiles;
-import static Game.States.Players.p1;
-import static Game.States.Players.turns;
+import static Game.Rules.Turns.p1;
+import static Game.Rules.Turns.turns;
+
 
 public class WhiteRook2 {
 
@@ -16,6 +17,7 @@ public class WhiteRook2 {
     private int x = 4;
     private int y = 4;
     boolean selected = false;
+
 
     //Event Handlers
     private ButtonHandlerRook handler = new ButtonHandlerRook();
@@ -43,9 +45,10 @@ public class WhiteRook2 {
         x = j;
         y = i;
 
-        System.out.println("Rook x: " + x + " y: "+ y);
+
         selected = false;
         turns++;
+
 
     }
 
@@ -58,7 +61,7 @@ public class WhiteRook2 {
             return true;
         }else if ((deltaX == 0) && (deltaY <= 4 ) && (deltaY > 0)){
             return true;
-        } else{
+        } else {
             return false;
         }
     }
@@ -73,11 +76,12 @@ public class WhiteRook2 {
                 selected = true;
             }
 
-            for(int i = 0; i < 5; i++){
+            for(int i = 0; i < 5; i++){//scans all tiles
                 for(int j = 0; j < 5; j++){
 
-                    if(source == Tiles[i][j] && selected == true && p1 == true){
+                    if((source == Tiles[i][j]) && (selected == true) && (p1 == true) ){
                         processClickRook(i,j);
+
                     }
 
                 }
